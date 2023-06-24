@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/saveQuest/static/css/main.2b24fdb1.chunk.css",
-    "main.js": "/saveQuest/static/js/main.fcc2d867.chunk.js",
-    "main.js.map": "/saveQuest/static/js/main.fcc2d867.chunk.js.map",
+    "main.css": "/saveQuest/static/css/main.f406a2d6.chunk.css",
+    "main.js": "/saveQuest/static/js/main.b27842c0.chunk.js",
+    "main.js.map": "/saveQuest/static/js/main.b27842c0.chunk.js.map",
     "runtime-main.js": "/saveQuest/static/js/runtime-main.ead73d69.js",
     "runtime-main.js.map": "/saveQuest/static/js/runtime-main.ead73d69.js.map",
-    "static/js/2.9c26e7bc.chunk.js": "/saveQuest/static/js/2.9c26e7bc.chunk.js",
-    "static/js/2.9c26e7bc.chunk.js.map": "/saveQuest/static/js/2.9c26e7bc.chunk.js.map",
+    "static/js/2.e03beb9f.chunk.js": "/saveQuest/static/js/2.e03beb9f.chunk.js",
+    "static/js/2.e03beb9f.chunk.js.map": "/saveQuest/static/js/2.e03beb9f.chunk.js.map",
     "index.html": "/saveQuest/index.html",
-    "static/css/main.2b24fdb1.chunk.css.map": "/saveQuest/static/css/main.2b24fdb1.chunk.css.map",
-    "static/js/2.9c26e7bc.chunk.js.LICENSE.txt": "/saveQuest/static/js/2.9c26e7bc.chunk.js.LICENSE.txt"
+    "static/css/main.f406a2d6.chunk.css.map": "/saveQuest/static/css/main.f406a2d6.chunk.css.map",
+    "static/js/2.e03beb9f.chunk.js.LICENSE.txt": "/saveQuest/static/js/2.e03beb9f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ead73d69.js",
-    "static/js/2.9c26e7bc.chunk.js",
-    "static/css/main.2b24fdb1.chunk.css",
-    "static/js/main.fcc2d867.chunk.js"
+    "static/js/2.e03beb9f.chunk.js",
+    "static/css/main.f406a2d6.chunk.css",
+    "static/js/main.b27842c0.chunk.js"
   ]
 }
