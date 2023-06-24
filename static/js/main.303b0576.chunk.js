@@ -1,0 +1,2 @@
+(this["webpackJsonpsave-quest"]=this["webpackJsonpsave-quest"]||[]).push([[0],{10:function(e,t,n){"use strict";n.r(t);var s=n(0),c=n.n(s),r=n(3),o=n.n(r),i=(n(8),n(1)),a=function(){return Object(i.jsx)("div",{className:"App",children:"hello worldd"})};o.a.render(Object(i.jsx)(c.a.StrictMode,{children:Object(i.jsx)(a,{})}),document.getElementById("root"))},8:function(e,t,n){}},[[10,1,2]]]);
+//# sourceMappingURL=main.303b0576.chunk.js.map
