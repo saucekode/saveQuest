@@ -18,6 +18,8 @@ const OnboardingForm = () => {
 
   const [userRecords, setUserRecords] = useState([])
 
+  const [showSavingsData, setShowSavingsData] = useState()
+
   
 
 //   console.log(userRecord)
@@ -29,19 +31,19 @@ const handleChange = (e) => {
       updatedFormData = {
         ...updatedFormData,
         amount: "10000",
-        interest: (5/100) * 10000
+        interest: (5/100) * 10000 * 7
       };
     } else if (value === "tier_2") {
       updatedFormData = {
         ...updatedFormData,
         amount: "20000",
-        interest: (10/100) * 20000
+        interest: (10/100) * 20000 * 7
       };
     } else if (value === "tier_3") {
       updatedFormData = {
         ...updatedFormData,
         amount: "30000",
-        interest: (20/100) * 30000
+        interest: (20/100) * 30000 * 7
       };
     }
   
@@ -89,7 +91,7 @@ const handleChange = (e) => {
 
 
     if (formIsValid) {
-      localStorage.setItem('formData', JSON.stringify(formData));
+      localStorage.setItem('user', JSON.stringify(formData));
 
       setUserRecords((prevFormArray) => [...prevFormArray, formData]);
 
@@ -101,14 +103,30 @@ const handleChange = (e) => {
       });
 
     }
+
+    setShowSavingsData(true)
   };
 
- 
+  const [userData, setUserData] = useState()
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUserData(JSON.parse(storedUser));
+    }
+  }, []);
+
   useEffect(() => {
     localStorage.setItem('users', JSON.stringify(userRecords))
   })
+  
   return (
-    <form onSubmit={handleSubmit}>
+    <>
+        {
+
+            !showSavingsData
+            ?
+            <form onSubmit={handleSubmit}>
       <div>
       {errors.firstName && <div className="error">{errors.firstName}</div>}
         <label>
@@ -165,6 +183,16 @@ const handleChange = (e) => {
       </div>
       <button type="submit">Submit</button>
     </form>
+    :
+    <div>
+        <p>Here are your details:</p>
+        <p>First Name: {userData.firstName}</p>
+        <p>Last Name: {userData.lastName}</p>
+        <p>Interest: {userData.interest}</p>
+        <p>Principal: {userData.amount}</p>
+    </div>
+        }
+    </>
   );
 };
 
