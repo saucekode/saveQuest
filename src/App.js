@@ -30,7 +30,7 @@ const App = () => {
         <p className="heading">Welcome to SaveQuest</p>
         <p className='sub-heading'>SaveQuest is a savings application that earns you profit in a week period.</p>
         <buton className="save-btn" onClick={handleRegister}>Start Saving Now</buton>
-        <button className="view-btn">View Savings Records</button>
+        <button className="view-btn" onClick={handleCustomerRecords}>View Savings Records</button>
       </div>
       }
 
