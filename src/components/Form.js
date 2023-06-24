@@ -7,6 +7,7 @@ const OnboardingForm = () => {
     email: '',
     tierType: '',
     amount:'',
+    interest: '',
   });
   const [errors, setErrors] = useState({
     firstName: '',
@@ -27,17 +28,20 @@ const handleChange = (e) => {
     if (value === "tier_1") {
       updatedFormData = {
         ...updatedFormData,
-        amount: "10000"
+        amount: "10000",
+        interest: (5/100) * 10000
       };
     } else if (value === "tier_2") {
       updatedFormData = {
         ...updatedFormData,
-        amount: "20000"
+        amount: "20000",
+        interest: (10/100) * 20000
       };
     } else if (value === "tier_3") {
       updatedFormData = {
         ...updatedFormData,
-        amount: "30000"
+        amount: "30000",
+        interest: (20/100) * 30000
       };
     }
   
@@ -50,11 +54,6 @@ const handleChange = (e) => {
     }));
   };
   
-
-  const handleCalculateInterest = () => {
-    
-  }
-  let userRecord = [];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -94,15 +93,20 @@ const handleChange = (e) => {
 
       setUserRecords((prevFormArray) => [...prevFormArray, formData]);
 
-      localStorage.setItem('users', JSON.stringify(userRecords))
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        tierType: '',
+      });
+
     }
   };
 
-
-  useEffect(() => {
-    localStorage.setItem("userRecords", JSON.stringify(userRecord))
-  })
  
+  useEffect(() => {
+    localStorage.setItem('users', JSON.stringify(userRecords))
+  })
   return (
     <form onSubmit={handleSubmit}>
       <div>
