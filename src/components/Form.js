@@ -1,30 +1,60 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const OnboardingForm = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
-    selection: '',
+    tierType: '',
+    amount:'',
   });
   const [errors, setErrors] = useState({
     firstName: '',
     lastName: '',
     email: '',
-    selection: '',
+    tierType: ''
   });
 
-  const handleChange = (e) => {
+  const [userRecords, setUserRecords] = useState([])
+
+  
+
+//   console.log(userRecord)
+const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    let updatedFormData = { ...formData };
+  
+    if (value === "tier_1") {
+      updatedFormData = {
+        ...updatedFormData,
+        amount: "10000"
+      };
+    } else if (value === "tier_2") {
+      updatedFormData = {
+        ...updatedFormData,
+        amount: "20000"
+      };
+    } else if (value === "tier_3") {
+      updatedFormData = {
+        ...updatedFormData,
+        amount: "30000"
+      };
+    }
+  
+    updatedFormData[name] = value;
+  
+    setFormData(updatedFormData);
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name]: '',
+      [name]: "",
     }));
   };
+  
+
+  const handleCalculateInterest = () => {
+    
+  }
+  let userRecord = [];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,25 +81,34 @@ const OnboardingForm = () => {
       newErrors.email = 'Invalid email format';
     }
 
-    if (formData.selection.length === 0) {
+    if (formData.tierType.trim() === '') {
       formIsValid = false;
-      newErrors.selection = 'Selection is required';
+      newErrors.tierType = 'Tier type is required';
     }
 
     setErrors(newErrors);
 
+
     if (formIsValid) {
-      // Form is valid, save the data to local storage
       localStorage.setItem('formData', JSON.stringify(formData));
-      console.log('Form data saved:', formData);
+
+      setUserRecords((prevFormArray) => [...prevFormArray, formData]);
+
+      localStorage.setItem('users', JSON.stringify(userRecords))
     }
   };
 
+
+  useEffect(() => {
+    localStorage.setItem("userRecords", JSON.stringify(userRecord))
+  })
+ 
   return (
     <form onSubmit={handleSubmit}>
       <div>
+      {errors.firstName && <div className="error">{errors.firstName}</div>}
         <label>
-          First Name:
+          First Name<br/>
           <input
             type="text"
             name="firstName"
@@ -77,11 +116,11 @@ const OnboardingForm = () => {
             onChange={handleChange}
           />
         </label>
-        {errors.firstName && <div className="error">{errors.firstName}</div>}
       </div>
       <div>
+      {errors.lastName && <div className="error">{errors.lastName}</div>}
         <label>
-          Last Name:
+          Last Name<br/>
           <input
             type="text"
             name="lastName"
@@ -89,11 +128,12 @@ const OnboardingForm = () => {
             onChange={handleChange}
           />
         </label>
-        {errors.lastName && <div className="error">{errors.lastName}</div>}
+        
       </div>
       <div>
+        {errors.email && <div className="error">{errors.email}</div>}
         <label>
-          Email:
+          Email<br/>
           <input
             type="email"
             name="email"
@@ -101,22 +141,23 @@ const OnboardingForm = () => {
             onChange={handleChange}
           />
         </label>
-        {errors.email && <div className="error">{errors.email}</div>}
       </div>
       <div>
+      {errors.tierType && <div className="error">{errors.tierType}</div>}
+
         <label>
-          Selection:
+          Select tier<br/>
           <select
-            name="selection"
-            value={formData.selection}
+            name="tierType"
+            value={formData.tierType}
             onChange={handleChange}
           >
-            <option value="">Select an option</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
+            <option value="">Select a savings tier</option>
+            <option value="tier_1">Tier 1</option>
+            <option value="tier_2">Tier 2</option>
+            <option value="tier_3">Tier 3</option>
           </select>
         </label>
-        {errors.selection && <div className="error">{errors.selection}</div>}
       </div>
       <button type="submit">Submit</button>
     </form>

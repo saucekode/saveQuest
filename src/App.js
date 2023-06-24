@@ -27,8 +27,10 @@ const App = () => {
         &&
 
         <>
-        <div className='center'>Savings form</div>
+        <div className='center form-heading'>Savings form</div>
+        <div  className='form'>
         <OnboardingForm/>
+        </div>
         </>
         
       }
