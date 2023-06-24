@@ -47,7 +47,12 @@ const App = () => {
         :
 
         <>
-        {}
+        {userRecord.map((u) => {
+          <div>
+            <p>firstName: {u.firstName}</p>
+            <p>lastName: {u.lastName}</p>
+          </div>
+        })}
         </>
       }
     </div>
